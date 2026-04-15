@@ -42,7 +42,7 @@ const TermsOfUse = () => {
       </p>
 
       <p className="mt-8 text-sm text-gray-600">
-        Last updated: June 30, 2025
+        Last updated: April 10,2026 
       </p>
     </div>
   );

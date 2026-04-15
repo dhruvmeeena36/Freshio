@@ -18,7 +18,7 @@ const MyItems = () => {
                 <div className='bg-white md:p-10 rounded-3xl my-10'>
                     <div className='rounded-3xl py-10 px-5 lg:px-10'>
                         <Suspense fallback={<Loading></Loading>}>
-                            <MyItemsTable FetchFoods={FetchFoods(user?.email, user?.accessToken)}></MyItemsTable>
+                            <MyItemsTable FetchFoods={FetchFoods(user?.accessToken)}></MyItemsTable>
                         </Suspense>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ import FoodDetails from "../Pages/FoodDetails/FoodDetails";
 import CookiePolicy from "../Pages/CookiePolicy/CookiePolicy";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfUse from "../Pages/TermsOfUse/TermsOfUse";
+import { API_ENDPOINTS } from "../utils/api";
 import FAQ from "../Pages/Faq/Faq";
 import About from "../Pages/About/About";
 import { lazy } from "react";
@@ -46,7 +47,6 @@ const router = createBrowserRouter([
             {
                 path: '/fridge',
                 Component: Fridge,
-                loader: () => fetch('https://food-pulse-server.vercel.app/foods'),
                 hydrateFallbackElement: <Loading></Loading>
             },
             {

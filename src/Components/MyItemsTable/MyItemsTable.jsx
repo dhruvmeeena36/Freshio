@@ -9,11 +9,12 @@ import logo from '../../assets/Pulse.png';
 import AuthContext from '../../Context/AuthContext';
 import dataNotFound from '../../assets/notFound.json'
 import Lottie from 'lottie-react';
+import { API_ENDPOINTS } from '../../utils/api';
 
 const MyItemsTable = ({FetchFoods}) => {
     const {user} = useContext(AuthContext);
     const data = use(FetchFoods);
-    const [myFoods, setMyFoods] = useState(data);
+    const [myFoods, setMyFoods] = useState(Array.isArray(data) ? data : []);
     const [singleFood, setSingleFood] = useState({});
 
     // Handle Delete
@@ -29,7 +30,7 @@ const MyItemsTable = ({FetchFoods}) => {
         confirmButtonText: "Yes, delete it!"
         }).then((result) => {
         if (result.isConfirmed) {
-            axios.delete(`https://food-pulse-server.vercel.app/foods/${id}`, 
+            axios.delete(API_ENDPOINTS.deleteFood(id), 
                 {
                     headers: {
                         authorization: `Bearer ${user.accessToken}`
@@ -69,14 +70,14 @@ const MyItemsTable = ({FetchFoods}) => {
         const updateInfo = Object.fromEntries(formData.entries());
         
         // Update data
-        axios.put(`https://food-pulse-server.vercel.app/foods/${id}`, updateInfo, {
+        axios.put(API_ENDPOINTS.updateFood(id), updateInfo, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
         })
         .then(res => {
             if (res.data.modifiedCount) {
-                fetch(`https://food-pulse-server.vercel.app/foods/${id}`,{
+                fetch(API_ENDPOINTS.getFoodById(id),{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }

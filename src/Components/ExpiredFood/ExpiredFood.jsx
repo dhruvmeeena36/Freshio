@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import { AlarmClock, CalendarDays, ClockAlert, Link } from 'lucide-react';
 import FoodCard from '../FoodCard/FoodCard';
 import "slick-carousel/slick/slick.css";
@@ -8,8 +8,7 @@ import dataNotFound from '../../assets/notFound.json'
 import { motion } from 'framer-motion';
 import Lottie from 'lottie-react';
 
-const ExpiredFood = ({fetchExpiredFoods}) => {
-    const expiredFoods = use(fetchExpiredFoods);
+const ExpiredFood = ({expiredFoods = []}) => {
     // Slider
     var settings = {
     dots: true,

@@ -1,13 +1,10 @@
 import { AlarmClock, ClockAlert, LayoutList, ScrollText } from 'lucide-react';
-import React, { use } from 'react';
+import React from 'react';
 import { Slide } from 'react-awesome-reveal';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
-const CountUpSection = ({expiringSoon, fetchExpiredFoods, fetchAllFoods, fetchAllNotes}) => {
-    const allFoods = use(fetchAllFoods);
-    const allNotes = use(fetchAllNotes);
-    const expiredFoods = use(fetchExpiredFoods);
+const CountUpSection = ({expiringSoon = [], expiredFoods = [], allFoods = [], allNotes = []}) => {
     const { ref, inView } = useInView({ triggerOnce: false });
     return (
         <div className='py-10 max-w-[1500px] mx-auto'>

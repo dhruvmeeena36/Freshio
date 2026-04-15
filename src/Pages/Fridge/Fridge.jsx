@@ -1,18 +1,52 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
 import FoodCard from '../../Components/FoodCard/FoodCard';
 import dataNotFound from '../../assets/notFound.json'
 import Lottie from 'lottie-react';
 import AuthContext from '../../Context/AuthContext';
+import { API_ENDPOINTS } from '../../utils/api';
+
 const Fridge = () => {
     const {user} = useContext(AuthContext);
-    const data = useLoaderData();
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     
     const [filterValue, setFilterValue] = useState('');
     const [sortValue, setSortValue] = useState('');
     
     const [loadMore, setLoadMore] = useState(false);
-    const [foods, setFoods] = useState(data.slice(0,9));
+    const [foods, setFoods] = useState([]);
+
+    // Fetch user's foods on mount
+    useEffect(() => {
+        if (user?.accessToken) {
+            setLoading(true);
+            fetch(API_ENDPOINTS.getMyFoods(), {
+                headers: { authorization: `Bearer ${user.accessToken}` }
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`API Error: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                const foodsArray = Array.isArray(data) ? data : [];
+                setData(foodsArray);
+                setFoods(foodsArray.slice(0, 9));
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Error fetching foods:', err);
+                setData([]);
+                setFoods([]);
+                setLoading(false);
+            });
+        } else {
+            setData([]);
+            setFoods([]);
+            setLoading(false);
+        }
+    }, [user?.accessToken]);
 
     // Load more functionality
     useEffect(() => {
@@ -27,7 +61,7 @@ const Fridge = () => {
     // Filter by category
     useEffect(() => {
         if (filterValue !== "") {            
-            fetch(`https://food-pulse-server.vercel.app/foods?category=${filterValue}`, {
+            fetch(API_ENDPOINTS.getFoodsByCategory(filterValue), {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
             }
@@ -49,7 +83,7 @@ const Fridge = () => {
 
         // Send search value to db
         if (search !== "") {            
-            fetch(`https://food-pulse-server.vercel.app/foods?search=${search}`, {
+            fetch(API_ENDPOINTS.searchFoods(search), {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
             }
@@ -69,14 +103,14 @@ const Fridge = () => {
     useEffect(() => {
         // Nearly Expired
         if (sortValue === 'Nearly Expired') {
-            fetch('https://food-pulse-server.vercel.app/foods/expiring-soon').then(res => res.json())
+            fetch(API_ENDPOINTS.getExpiringFoods()).then(res => res.json())
             .then(data => {
                 setFoods(data)
             })
         }
         // Expired
         if (sortValue === 'Expired') {
-            fetch('https://food-pulse-server.vercel.app/foods/expired-foods')
+            fetch(API_ENDPOINTS.getExpiredFoods())
             .then(res => res.json())   
             .then(data => {
                 setFoods(data)

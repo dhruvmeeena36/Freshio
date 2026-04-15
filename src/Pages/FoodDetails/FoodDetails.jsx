@@ -10,6 +10,7 @@ import Note from '../../Components/Note/Note';
 import ExpirationCountdown from '../../Components/CountdownTimer/ExpirationCountdown';
 import dataNotFound from '../../assets/notFound.json'
 import Lottie from 'lottie-react';
+import { API_ENDPOINTS } from '../../utils/api';
 
 const FoodDetails = () => {
     const {user} = useContext(AuthContext);
@@ -18,7 +19,7 @@ const FoodDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios(`https://food-pulse-server.vercel.app/foods/${id}`, {
+        axios(API_ENDPOINTS.getFoodById(id), {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
             }
@@ -55,7 +56,7 @@ const FoodDetails = () => {
     };
 
     // Send Note to DB
-        axios.post('https://food-pulse-server.vercel.app/notes', note, {
+        axios.post(API_ENDPOINTS.createNote(), note, {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
             }
@@ -74,7 +75,7 @@ const FoodDetails = () => {
 
     // Load Note
     useEffect(()=>{
-        fetch(`https://food-pulse-server.vercel.app/notes/${_id}`, {
+        fetch(API_ENDPOINTS.getNotesByFood(_id), {
             headers: {
                 authorization: `Bearer ${user?.accessToken}`
             }

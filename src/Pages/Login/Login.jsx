@@ -57,17 +57,23 @@ const Login = () => {
     const handleGoogleSingIn = () => {
         googleSingIn()
         .then(result => {
-            setUser(result.user);
-            navigate(`${location.state ? location.state : '/'}`)
-            Swal.fire({
-            icon: "success",
-            title: "Sing In Successful!",
-            showConfirmButton: false,
-            timer: 1500
-            });
+            if (result) { // Only show success if we got a result (popup succeeded)
+                setUser(result.user);
+                navigate(`${location.state ? location.state : '/'}`)
+                Swal.fire({
+                icon: "success",
+                title: "Sign In Successful!",
+                showConfirmButton: false,
+                timer: 1500
+                });
+            }
+            // If result is null, it means redirect was used and user will be handled by useEffect
         })
         .catch(error => {
-           toast.error(error.message)
+            console.error('Google sign in failed:', error);
+            if (error.code !== 'auth/popup-closed-by-user') {
+                toast.error(error.message || 'Google sign in failed')
+            }
         })
     }
 

@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Server folder (separate repo)
+server/
+
+# VS Code search files
+*.code-search
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -59,7 +59,7 @@ const About = () => {
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
         Have questions or feedback? Feel free to reach out!  
         <br />
-        Email: <a href="mailto:support@foodpulse.com" className="text-blue-600 underline">support@foodpulse.com</a>  
+        Email: <a href="mailto:dhruvmeena2981@gmail.com" className="text-blue-600 underline">dhruvmeena2981@gmail.com</a>  
         <br />
         Phone: +880 1234 567890  
         <br />

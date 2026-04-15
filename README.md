@@ -12,7 +12,7 @@
 
 ## 📸 Screenshot
 
-![Food Pulse Preview](https://i.ibb.co/ZpfXKjjn/screencapture-food-pulse-web-netlify-app-2025-06-15-14-04-04.png)
+![Food Pulse Preview](https://i.ibb.co/ZpfXKjjn/screencapture-food-pulse-web-netlify-app-2026 -06-15-14-04-04.png)
 
 ---
 
@@ -107,7 +107,7 @@ npm run start
 
 **👨‍💻 Developer:** Md. Shahariar Hafiz  
 **📧 Email:** shahariar.works@gmail.com  
-**🔗 GitHub:** [mdshahariarhafizofficial](https://github.com/mdshahariarhafizofficial)
+**🔗 GitHub:** [dhruvmeeena36](https://github.com/dhruvmeeena36)
 
 ---
 

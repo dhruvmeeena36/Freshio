@@ -8,6 +8,8 @@ import AuthContext from '../../Context/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router';
+import { API_ENDPOINTS } from '../../utils/api';
+
 const AddFood = () => {
      const {user} = useContext(AuthContext);
      const navigate = useNavigate();
@@ -24,7 +26,7 @@ const AddFood = () => {
         
         
         // Send Data to DB
-        axios.post('https://food-pulse-server.vercel.app/foods', newFood,{
+        axios.post(API_ENDPOINTS.createFood(), newFood,{
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
