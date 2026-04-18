@@ -1,18 +1,10 @@
 
 # 🍽️ Food Pulse
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 **Food Pulse** is a smart food management web application that helps users monitor expiry dates, categorize food items, add storage notes, and avoid unnecessary waste — all in one intuitive interface.
 
-🔗 **Live Website:** [https://food-pulse-web.netlify.app](https://food-pulse-web.netlify.app)  
-🌐 **Backend API:** [https://food-pulse-server.vercel.app](https://food-pulse-server.vercel.app)
-
----
-
-## 📸 Screenshot
-
-![Food Pulse Preview](https://i.ibb.co/ZpfXKjjn/screencapture-food-pulse-web-netlify-app-2026 -06-15-14-04-04.png)
+🔗 **Live Website:** [https://food-pulse-web.netlify.app][(https://food-management-kappa.vercel.app/)]
 
 ---
 
@@ -105,8 +97,8 @@ npm run start
 
 ## 👨‍💻 Developer Info
 
-**👨‍💻 Developer:** Md. Shahariar Hafiz  
-**📧 Email:** shahariar.works@gmail.com  
+**👨‍💻 Developer:** Dhruv meena  
+**📧 Email:** dhruvmeena2981@gmail.com  
 **🔗 GitHub:** [dhruvmeeena36](https://github.com/dhruvmeeena36)
 
 ---
