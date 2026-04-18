@@ -4,7 +4,7 @@
 
 **Food Pulse** is a smart food management web application that helps users monitor expiry dates, categorize food items, add storage notes, and avoid unnecessary waste — all in one intuitive interface.
 
-🔗 **Live Website:** [https://food-pulse-web.netlify.app][(https://food-management-kappa.vercel.app/)]
+🔗 **Live Website:** [(https://food-management-kappa.vercel.app/)]
 
 ---
 
